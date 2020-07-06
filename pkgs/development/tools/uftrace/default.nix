@@ -1,4 +1,4 @@
-{stdenv, fetchFromGitHub}:
+{stdenv, fetchFromGitHub, ncurses, elfutils, pkg-config}:
 
 stdenv.mkDerivation rec {
   pname = "uftrace";
@@ -10,6 +10,8 @@ stdenv.mkDerivation rec {
     rev = "v${version}";
     sha256 = "09zj4lgsbx0yp4i8ij9nh7wzylfcj421jzf1kkc2zpnn5hgynsb5";
   };
+
+  buildInputs = [ ncurses elfutils pkg-config ];
 
   postUnpack = ''
         patchShebangs .
